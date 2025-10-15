@@ -3,8 +3,6 @@
 # в области а1 больше, чем сумма чисел в нечетных строках в области а4, то поменять симметрично области а1 и а4 местами,
 # иначе а1 и а2 поменять местами несимметрично. При этом матрица А не меняется. После чего вычисляется выражение: 
 # A*А– K*AT. Выводятся по мере формирования А, F и все матричные операции последовательно.
-from math import prod
-
 def read_matrix(filename): return [list(map(int, line.split())) for line in open(filename)]
 def print_matrix(m, name): print(f"\n{name}:"); [print(" ".join(f"{x:4}" for x in row)) for row in m]
 def transpose(m): return [list(row) for row in zip(*m)]
@@ -55,3 +53,4 @@ print(f"\nЧётных в нечётных столбцах области 1: {e
 print(f"Сумма элементов в нечётных строках области 4: {sum_odd_rows}")
 print_matrix(F, "Матрица F после преобразования")
 print_matrix(R, "Результат выражения A*A - K*F^T")
+
