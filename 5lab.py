@@ -22,14 +22,13 @@ def python_method(K):
     return [list(p) for p in product((0,1,2,3), repeat=K)]
 
 def optimized_method(K, max_sum):
-    candidates = [list(p) for p in product((0,1,2,3), repeat=K) if sum(p) <= max_sum]
+    candidates = [list(p) for p in product((0,1,2,3), repeat=K) if sum(p) == max_sum]
     if not candidates:
         return []
-    max_s = max(sum(arr) for arr in candidates)
-    return [arr for arr in candidates if sum(arr) == max_s]
+    return [arr for arr in candidates if sum(arr) == max_sum]
 
 K = 4
-max_sum = 2 * K
+max_sum = 8
 
 alg = algorithmic_method(K)
 py = python_method(K)
@@ -50,10 +49,10 @@ print(f"Скорость (100 повторов): algorithmic = {t_alg:.4f}s, pyt
 optimal = optimized_method(K, max_sum)
 
 print("Оптимальные массивы:")
-for i, arr in enumerate(optimal, start=1):
-    end_char = ", " if i % 5 != 0 and i != len(optimal) else "\n"
+for i, arr in enumerate(optimal, start=1):  #в массив арр добавляет массив из оптимал а в i добавляет индекс этого массива начиная с 1
+    end_char = ", " if i % 5 != 0 and i != len(optimal) else "\n" #указывает что и после каких массивов выводить 
     print(arr, end=end_char)
 
 print(f"\nКоличество оптимальных массивов: {len(optimal)}")
 if optimal:
-    print("Пример оптимального массива:", optimal[0] , "sum ⩽ 8")
+    print("Пример оптимального массива:", optimal[0] , "sum = 8")
