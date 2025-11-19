@@ -4,7 +4,6 @@
 # вывести таблицу и график сравнения времени рекурсивного и итерационого метода 
 import math
 import timeit
-import pandas as pd
 import matplotlib.pyplot as plt
 
 def F_recursive(n: int) -> float:
@@ -48,3 +47,4 @@ plt.title('Сравнение времени: рекурсия vs итераци
 plt.legend()
 plt.grid(True)
 plt.show()
+
