@@ -35,12 +35,13 @@ results = [(n,
             timeit.timeit(lambda n=n: F_iterative(n), number=10))
            for n in range(2, 21)]   
 
-df = pd.DataFrame(results, columns=['n', 'время рекурсии', 'время итерации',])
-print(df.to_string(index=False))
+print(f"{'n':>3} {'Время рекурсия (с)':>18} {'Время итерация (с)':>18}")
+for n, trec, titer in results:
+    print(f"{n:>3} {trec:>18.6f} {titer:>18.6f}")
 
 plt.figure(figsize=(8,5))
-plt.plot(df['n'], df['время рекурсии'], '--o', label='Рекурсия')
-plt.plot(df['n'], df['время итерации'], '-o', label='Итерация')
+plt.plot([r[0] for r in results], [r[1] for r in results], '--o', label='Рекурсия')
+plt.plot([r[0] for r in results], [r[2] for r in results], '-o', label='Итерация')
 plt.xlabel('n')
 plt.ylabel('время (с)')
 plt.title('Сравнение времени: рекурсия vs итерация')
