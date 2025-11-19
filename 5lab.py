@@ -33,11 +33,8 @@ max_sum = 8
 alg = algorithmic_method(K)
 py = python_method(K)
 
-print("Алг-метод — первые 10 массивов:")
-for arr in alg[:10]:
-    print(arr)
-print("\nPython-метод — первые 10 массивов:")
-for arr in py[:10]:
+print("Всего массивов:")
+for arr in alg:
     print(arr)
 
 print(f"\nВсего массивов: {len(py)}\n")
@@ -56,3 +53,4 @@ for i, arr in enumerate(optimal, start=1):  #в массив арр добавл
 print(f"\nКоличество оптимальных массивов: {len(optimal)}")
 if optimal:
     print("Пример оптимального массива:", optimal[0] , "sum = 8")
+
