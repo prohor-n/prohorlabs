@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 def F_recursive(n: int) -> float:
     if n <= 5:
         return 10
-    elif 5 < n <= 12:
+    elif n <= 12:
         return (F_recursive(n-2) - F_recursive(n-1))
     else:
         return (((-1)**n) * (6*F_recursive(n-1) - 7*F_recursive(n-2)) / (math.factorial(2*n)))
@@ -22,7 +22,7 @@ def F_iterative(n):
             factorial_cache *= (2*i - 1)*(2*i)
         if i <= 5:
             F[i] = 10
-        elif 5 < i <= 12:
+        elif i <= 12:
             F[i] = F[i-2] - F[i-1]
         else:
             F[i] = ((-1)**i) * (6*F[i-1] - 7*F[i-2]) / factorial_cache
@@ -33,9 +33,9 @@ results = [(n,
             timeit.timeit(lambda n=n: F_iterative(n), number=10))
            for n in range(2, 21)]   
 
-print(f"{'n':>3} {'Время рекурсия (с)':>18} {'Время итерация (с)':>18}")
+print(f"{'n':<3} | {'Время рекурсия (с)':<18} | {'Время итерация (с)':<18}")
 for n, trec, titer in results:
-    print(f"{n:>3} {trec:>18.6f} {titer:>18.6f}")
+    print(f"{n:<3} | {trec:<18.6f} | {titer:<18.6f}")
 
 plt.figure(figsize=(8,5))
 plt.plot([r[0] for r in results], [r[1] for r in results], '--o', label='Рекурсия')
@@ -46,8 +46,3 @@ plt.title('Сравнение времени: рекурсия vs итераци
 plt.legend()
 plt.grid(True)
 plt.show()
-
-plt.grid(True)
-plt.show()
-
-
