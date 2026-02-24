@@ -12,7 +12,8 @@ def F_recursive(n: int) -> float:
     elif n <= 12:
         return (F_recursive(n-2) - F_recursive(n-1))
     else:
-        return (((-1)**n) * (6*F_recursive(n-1) - 7*F_recursive(n-2)) / (math.factorial(2*n)))
+        k=(-1)**n
+        return (k * (6*F_recursive(n-1) - 7*F_recursive(n-2)) / (math.factorial(2*n)))
 
 def F_iterative(n):
     F = {}
@@ -25,7 +26,8 @@ def F_iterative(n):
         elif i <= 12:
             F[i] = F[i-2] - F[i-1]
         else:
-            F[i] = ((-1)**i) * (6*F[i-1] - 7*F[i-2]) / factorial_cache
+            k=(-1)**i
+            F[i] = k * (6*F[i-1] - 7*F[i-2]) / factorial_cache
     return F[n]
 
 results = [(n,
@@ -46,3 +48,4 @@ plt.title('Сравнение времени: рекурсия vs итераци
 plt.legend()
 plt.grid(True)
 plt.show()
+
