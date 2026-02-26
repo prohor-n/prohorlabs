@@ -1,3 +1,5 @@
+# сегментация поворот квадратов 
+
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog, colorchooser
 import math
